@@ -9,7 +9,7 @@ import { Container } from 'components/shared/styleHelpers';
 const Main = styled(Container)`
 	width: 100%;
 	height: 100%;
-	padding-top: 68px;
+	padding-top: 100px;
 `;
 const Shell = styled.div`
 	width: 100vw;

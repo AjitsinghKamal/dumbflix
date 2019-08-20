@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import React from 'react';
 const Container = styled.main`
 	display: flex;
-	padding: 15px;
 	align-items: center;
 	justify-content: space-between;
 	flex-flow: row nowrap;
