@@ -1,8 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+
 import Grid from 'components/grid';
-const Home = () => (
+
+const Home = props => (
 	<div>
-		<Grid />
+		<Grid items={props.titles} />
 	</div>
 );
-export default Home;
+Home.propTypes = {
+	titles: PropTypes.array,
+};
+const mapStateToProps = state => ({
+	titles: state.catalogue ? state.catalogue.shows.map(show => show) : [],
+});
+export default connect(
+	mapStateToProps,
+	null
+)(Home);
