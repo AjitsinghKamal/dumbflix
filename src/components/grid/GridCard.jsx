@@ -21,6 +21,7 @@ const CardWrap = styled.div`
 	justify-content: space-between;
 	flex-flow: row nowrap;
 	flex: 1 0 30%;
+	max-width: 30%;
 	height: 300px;
 	margin: 20px;
 	border-radius: 5px;
@@ -30,9 +31,15 @@ const CardWrap = styled.div`
 	&:hover {
 		box-shadow: 0 0px 10px 4px #d2d2d2;
 	}
+	@media screen and (max-width: 1200px) {
+		max-width: 100%;
+	}
+	@media screen and (max-width: 640px) {
+		width: calc(100% - 40px);
+	}
 `;
 const ImageWrap = styled.div`
-	flex: 0 0 46%;
+	flex: 1 0 46%;
 `;
 const Image = styled.img`
 	width: 100%;
@@ -41,6 +48,10 @@ const Image = styled.img`
 `;
 const Content = styled.div`
 	padding: 20px 15px;
+	flex: 1 0 55%;
+	@media screen and (max-width: 720px) {
+		display: none;
+	}
 `;
 const Title = styled.p`
 	font-size: 20px;

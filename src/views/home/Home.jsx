@@ -12,9 +12,19 @@ const Home = props => (
 Home.propTypes = {
 	titles: PropTypes.array,
 };
-const mapStateToProps = state => ({
-	titles: state.catalogue ? state.catalogue.shows.map(show => show) : [],
-});
+const mapStateToProps = state => {
+	let titles = [];
+	if (state.activeSearch) {
+		titles = state.catalogue.filter(show =>
+			show.title.toLowerCase().includes(state.activeSearch)
+		);
+	} else if (state.catalogue) {
+		titles = state.catalogue.map(show => show);
+	}
+	return {
+		titles,
+	};
+};
 export default connect(
 	mapStateToProps,
 	null

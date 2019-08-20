@@ -6,12 +6,15 @@ import GridCard from './GridCard';
 const Container = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 	flex-flow: row wrap;
 	overflow: auto;
 	height: 100%;
 	width: calc(100% + 40px);
 	margin: 0 -20px;
+	@media screen and (max-width: 640px) {
+		flex-direction: column;
+	}
 `;
 const makeGrid = items => {
 	return items.length

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Home from 'views/home';
-import Header from 'components/shared/header';
+import Header from 'components/header';
 import { Container } from 'components/shared/styleHelpers';
 
 const Main = styled(Container)`
