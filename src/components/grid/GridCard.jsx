@@ -21,7 +21,7 @@ const CardWrap = styled.div`
 	justify-content: space-between;
 	flex-flow: row nowrap;
 	flex: 1 0 30%;
-	max-width: 440px;
+	max-width: 460px;
 	height: 300px;
 	margin: 20px;
 	border-radius: 5px;

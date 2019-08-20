@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import React from 'react';
 import Search from 'components/search';
 import { connect } from 'react-redux';
+import { setSearch } from 'store/actions';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router';
 import { resetActive } from 'store/actions';
@@ -20,6 +21,10 @@ const HeadWrap = styled(Container)`
 	right: 0;
 	top: 0;
 	height: 70px;
+	@media screen and (max-width: 640px) {
+		flex-direction: column;
+		padding-top: 20px;
+	}
 `;
 const Back = styled.span`
 	font-size: 12px;
@@ -28,25 +33,32 @@ const Back = styled.span`
 	cursor: pointer;
 `;
 const Header = props => {
-	const back = () => {
-		props.resetActive();
-		props.history.goBack();
+	const showSearch = props.match.isExact && props.match.path === '/';
+	const clickHandler = () => {
+		if (!showSearch) {
+			props.resetActive();
+			props.history.goBack();
+			return;
+		}
 	};
 	return (
 		<HeadWrap as="header">
-			<h3 onClick={() => (!props.showSearch ? back() : null)}>
-				{!props.showSearch ? <Back> ⮃ </Back> : null}DumbFlix
+			<h3 onClick={() => clickHandler()}>
+				{!showSearch ? <Back> ⮃ </Back> : null}DumbFlix
 			</h3>
-			{props.showSearch ? <Search /> : null}
+			{showSearch ? <Search /> : null}
 		</HeadWrap>
 	);
 };
 Header.propTypes = {
 	showSearch: PropTypes.bool,
 	history: PropTypes.object,
+	match: PropTypes.object,
 	resetActive: PropTypes.func,
+	searchActive: PropTypes.string,
+	setSearch: PropTypes.func,
 };
 export default connect(
-	state => ({ showSearch: !state.active.details }),
-	{ resetActive }
+	state => ({ searchActive: state.list.activeSearch }),
+	{ resetActive, setSearch }
 )(withRouter(Header));

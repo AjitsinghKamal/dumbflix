@@ -13,6 +13,9 @@ const SearchWrap = styled.form`
 	max-width: 80%;
 	font-size: 15px;
 	margin-left: auto;
+	@media screen and (max-width: 640px) {
+		margin: 10px auto;
+	}
 `;
 const Input = styled.input`
 	padding: 10px 14px;

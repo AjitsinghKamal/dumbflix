@@ -50,7 +50,7 @@ export function getDetails(data) {
 		dispatch(setActive(data));
 		dispatch(requestActiveRating());
 		return fetch(
-			`http://www.omdbapi.com/?apikey=${process.env.REACT_APP_IMDB_KEY}&i=${data.imdbID}`
+			`https://www.omdbapi.com/?apikey=${process.env.REACT_APP_IMDB_KEY}&i=${data.imdbID}`
 		)
 			.then(
 				response => response.json(),
