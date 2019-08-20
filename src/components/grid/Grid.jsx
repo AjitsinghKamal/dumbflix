@@ -1,13 +1,25 @@
-import styled from 'styled-components';
 import React from 'react';
-const Container = styled.main`
+import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+import GridCard from './GridCard';
+const Container = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	overflow: auto;
 	height: 100%;
-	width: 100%;
+	width: calc(100% + 40px);
+	margin: 0 -20px;
 `;
-const Grid = () => <Container>hello</Container>;
+const makeGrid = items => {
+	return items.length
+		? items.map((item, index) => <GridCard key={index} data={item} />)
+		: null;
+};
+const Grid = props => <Container>{makeGrid(props.items)}</Container>;
+Grid.propTypes = {
+	items: PropTypes.array,
+};
 export default Grid;

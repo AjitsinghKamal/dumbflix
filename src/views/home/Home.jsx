@@ -5,9 +5,9 @@ import { connect } from 'react-redux';
 import Grid from 'components/grid';
 
 const Home = props => (
-	<div>
+	<main>
 		<Grid items={props.titles} />
-	</div>
+	</main>
 );
 Home.propTypes = {
 	titles: PropTypes.array,
