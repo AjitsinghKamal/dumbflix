@@ -16,13 +16,29 @@ const Container = styled.div`
 		flex-direction: column;
 	}
 `;
-const makeGrid = items => {
-	return items.length
-		? items.map((item, index) => <GridCard key={index} data={item} />)
-		: null;
-};
-const Grid = props => <Container>{makeGrid(props.items)}</Container>;
+
+class Grid extends React.Component {
+	constructor(props) {
+		super(props);
+		this.makeGrid = this.makeGrid.bind(this);
+	}
+	makeGrid(items) {
+		return items.length
+			? items.map((item, index) => (
+				<GridCard
+					key={index}
+					data={item}
+					action={this.props.action}
+				/>
+			))
+			: null;
+	}
+	render() {
+		return <Container>{this.makeGrid(this.props.items)}</Container>;
+	}
+}
 Grid.propTypes = {
 	items: PropTypes.array,
+	action: PropTypes.func,
 };
 export default Grid;

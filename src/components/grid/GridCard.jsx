@@ -21,7 +21,7 @@ const CardWrap = styled.div`
 	justify-content: space-between;
 	flex-flow: row nowrap;
 	flex: 1 0 30%;
-	max-width: 30%;
+	max-width: 440px;
 	height: 300px;
 	margin: 20px;
 	border-radius: 5px;
@@ -67,8 +67,12 @@ const Sub = styled.p`
 const Year = styled(Sub)`
 	font-size: 13px;
 `;
-const GridCard = ({ data }) => (
-	<CardWrap>
+const GridCard = ({ data, action }) => (
+	<CardWrap
+		onClick={() => {
+			action(data);
+		}}
+	>
 		<ImageWrap>
 			<Image src={images[data.poster]} alt="poster" />
 		</ImageWrap>
@@ -81,5 +85,6 @@ const GridCard = ({ data }) => (
 );
 GridCard.propTypes = {
 	data: PropTypes.object,
+	action: PropTypes.func,
 };
 export default GridCard;
