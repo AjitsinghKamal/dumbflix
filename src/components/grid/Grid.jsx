@@ -25,12 +25,12 @@ class Grid extends React.Component {
 	makeGrid(items) {
 		return items.length
 			? items.map((item, index) => (
-				<GridCard
-					key={index}
-					data={item}
-					action={this.props.action}
-				/>
-			))
+					<GridCard
+						key={index}
+						data={item}
+						action={this.props.action}
+					/>
+			  ))
 			: null;
 	}
 	render() {

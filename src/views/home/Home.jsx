@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { setActive } from 'store/actions';
+import { getDetails } from 'store/actions';
 import Grid from 'components/grid';
 
 class Home extends React.Component {
@@ -14,13 +14,14 @@ class Home extends React.Component {
 	static propTypes = {
 		titles: PropTypes.array,
 		history: PropTypes.object,
-		setActive: PropTypes.func,
+		getDetails: PropTypes.func,
 	};
 
 	showDetails(selected) {
-		this.props.setActive(selected);
+		this.props.getDetails(selected);
 		this.props.history.push({
-			pathname: '/' + selected.title.replace(/\s/g, ''),
+			pathname: '/' + selected.imdbID,
+			id: selected.imdbID,
 		});
 	}
 	render() {
@@ -46,5 +47,5 @@ const mapStateToProps = ({ list }) => {
 };
 export default connect(
 	mapStateToProps,
-	{ setActive }
+	{ getDetails }
 )(withRouter(Home));

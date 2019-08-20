@@ -20,13 +20,13 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<Shell>
-				<Header />
-				<Main>
-					<Router>
+				<Router>
+					<Header />
+					<Main>
 						<Route exact path="/" component={Home} />
 						<Route path="/:id" component={Details} />
-					</Router>
-				</Main>
+					</Main>
+				</Router>
 			</Shell>
 		);
 	}

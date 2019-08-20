@@ -12,6 +12,7 @@ const SearchWrap = styled.form`
 	width: 380px;
 	max-width: 80%;
 	font-size: 15px;
+	margin-left: auto;
 `;
 const Input = styled.input`
 	padding: 10px 14px;

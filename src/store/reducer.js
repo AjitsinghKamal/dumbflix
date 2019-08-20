@@ -29,6 +29,11 @@ function active(state = {}, action) {
 			return Object.assign({}, state, {
 				rating: action.value,
 			});
+		case ACT.RESET_ACTIVE:
+			return Object.assign({}, state, {
+				rating: null,
+				details: null,
+			});
 		default:
 			return state;
 	}
